@@ -1,4 +1,4 @@
-const Banner = () => {
+const Banner = ({ clicked }) => {
     return (
 
         <section className="text-gray-600" role="banner">
@@ -17,16 +17,16 @@ const Banner = () => {
                         recusandaefacere error.
                     </p>
 
-                    <div className="mt-8 sm:justify-center sm:flex">
-                        <a href="" className="block px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
+                    <div className="mt-8 justify-center flex">
+                        <button onClick={() => clicked('excuse')} className="block px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
                             Get an Excuse
-                        </a>
+                        </button>
                     </div>
-                    <div className="mt-8 sm:justify-center sm:flex">
-                        <a href="" className="block px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
+                    {/* <div className="mt-8 sm:justify-center sm:flex">
+                        <button href="" className="block px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
                             Gravity Checker
-                        </a>
-                    </div>
+                        </button>
+                    </div> */}
                 </div>
             </div>
         </section>

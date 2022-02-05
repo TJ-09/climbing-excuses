@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { GiStrong, GiMountainClimbing } from 'react-icons/gi';
 
 const Footer = () => {

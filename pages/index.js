@@ -3,8 +3,63 @@ import Banner from '../components/Banner/Banner'
 import Card from '../components/Card/Card'
 import Footer from '../components/Footer/Footer'
 import TextExcuse from '../components/TextExcuse/TextExcuse'
+import { useRouter } from 'next/router'
+import React, { useState, useEffect, useCallback } from 'react';
 
 export default function Home() {
+  const router = useRouter()
+
+  const [mainBody, setMainBody] = useState('home');
+
+  const ChangeMode = useCallback((mode) => {
+    if (mode === 'home') {
+      router.replace('/', undefined, { shallow: true });
+    }
+    setMainBody(mode)
+  }, [router]);
+
+  useEffect(() => {
+    if (router.query.q) {
+      // there is a query
+      // comes in title, btn, active
+      ChangeMode('excuseLoad'); // excuse mode
+    }
+
+  }, [router.query.q, ChangeMode])
+
+
+
+  // const ChangeMode = (mode) => {
+  //   if (mode === 'home') {
+  //     router.replace('/', undefined, { shallow: true });
+  //   }
+  //   setMainBody(mode)
+  // }
+
+  const Home = () => {
+    return <Card content={< Banner clicked={ChangeMode} />} />;
+  };
+  const Excuse = () => {
+    return <Card content={<TextExcuse clicked={ChangeMode} />} />;
+  };
+  const ExcuseLoad = () => {
+    return <Card content={<TextExcuse clicked={ChangeMode} id={router.query.q} />} />;
+  };
+  const Default = () => {
+    return <Card content={< Banner clicked={ChangeMode} />} />;;
+  };
+
+  const ENUM_STATES = {
+    home: <Home />,
+    excuse: <Excuse />,
+    excuseLoad: <ExcuseLoad />,
+    default: <Default />
+  };
+
+  function EnumState({ state }) {
+    return <div>{ENUM_STATES[state]}</div>;
+  }
+
   return (
     <>
       <Head>
@@ -12,9 +67,7 @@ export default function Home() {
         <meta name="Climbing Excuses - On Demand" content="Create an excuse for your climbing abilities" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div className="bg-gradient-to-t from-yellow-400 via-gray-50 to-teal-300 max-w-full max-h-full">
-
+      <div className="bg-gradient-to-t from-yellow-400 via-gray-50 to-teal-300 flex flex-col h-screen justify-between">
 
         {/* <section>
         <Card content={<TextExcuse />} />
@@ -22,7 +75,7 @@ export default function Home() {
 
         <main className='py-4'>
 
-          <Card content={<Banner />} />
+          <EnumState state={mainBody}></EnumState>
 
         </main>
 
