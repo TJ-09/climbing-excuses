@@ -13,8 +13,7 @@ const Banner = ({ clicked }) => {
                         On Demand
                     </h1>
                     <p className="max-w-xl mx-auto text-lg pt-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique necessitatibus dolorem soluta,
-                        recusandaefacere error.
+                        Climbing is hard and our buddies don&apos;t understand the challenges we face on the wall when they are just shouting random beta from the ground...Help them understand why we fell with this helpful tool.
                     </p>
 
                     <div className="mt-8 justify-center flex">

@@ -43,7 +43,8 @@ const excuses = [
   { id: 40, excuse: "have you seen the conditions?" },
   { id: 41, excuse: "that move is just unnatural" },
   { id: 42, excuse: "I didn't try hard enough" },
-
+  { id: 43, excuse: "I only try on V8/8b and above" },
+  { id: 44, excuse: "It's not a send day" },
 ]
 
 export default function handler(req, res) {
