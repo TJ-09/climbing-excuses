@@ -21,11 +21,6 @@ const Banner = ({ clicked }) => {
                             Get an Excuse
                         </button>
                     </div>
-                    {/* <div className="mt-8 sm:justify-center sm:flex">
-                        <button href="" className="block px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
-                            Gravity Checker
-                        </button>
-                    </div> */}
                 </div>
             </div>
         </section>

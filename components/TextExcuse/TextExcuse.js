@@ -1,7 +1,6 @@
 import { AiOutlineHome, AiOutlineShareAlt } from 'react-icons/ai';
 import { FaCopy } from 'react-icons/fa';
 import React, { useState } from 'react';
-
 import useSwr from 'swr'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
@@ -12,7 +11,6 @@ const TextExcuse = ({ clicked, id }) => {
     const urlLink = `https://${process.env.NEXT_PUBLIC_URL}?q=`
 
     const { data, mutate, error } = useSwr(`/api/excuse?q=${id}`, fetcher)
-    // const { data, mutate, error } = useSwr('/api/excuse', fetcher)
 
     let response;
 

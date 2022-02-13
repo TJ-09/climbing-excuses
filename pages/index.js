@@ -27,15 +27,6 @@ export default function Home() {
 
   }, [router.query.q, ChangeMode])
 
-
-
-  // const ChangeMode = (mode) => {
-  //   if (mode === 'home') {
-  //     router.replace('/', undefined, { shallow: true });
-  //   }
-  //   setMainBody(mode)
-  // }
-
   const Home = () => {
     return <Card content={< Banner clicked={ChangeMode} />} />;
   };
@@ -65,12 +56,21 @@ export default function Home() {
       <Head>
         <title>Climbing Excuses - On Demand</title>
         <meta name="Climbing Excuses - On Demand" content="Create an excuse for your climbing abilities" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <meta name="description" content="Create an excuse for your climbing abilities"></meta>
+        <meta property="og:title" content="Climbing Excuses - On Demand" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://climbingexcuses.com" />
+        <meta property="og:image" content="https://climbingexcuses.com/apple-touch-icon.png" />
+        <meta property="og:description" content="Create an excuse for your climbing abilities" />
+        <meta property="og:site_name" content="Climbing Excuses" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <meta charset="UTF-8"></meta>
       </Head>
+
       <div className="bg-gradient-to-t from-yellow-400 via-gray-50 to-teal-300 flex flex-col h-screen justify-between">
 
         <main className='py-4'>
