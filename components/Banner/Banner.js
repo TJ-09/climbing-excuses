@@ -16,9 +16,14 @@ const Banner = ({ clicked }) => {
                         Climbing is hard and our buddies don&apos;t understand the challenges we face on the wall when they are just shouting random beta from the ground...Help them understand with this helpful tool.
                     </p>
 
-                    <div className="mt-8 justify-center flex">
-                        <button onClick={() => clicked('excuse')} className="block px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
+                    <div className="mt-8 justify-center flex flex-col">
+                        <button onClick={() => clicked('excuse')} className="self-center w-56 px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
                             Get an Excuse
+                        </button>
+                        <p className="text-center py-2 my-2">Or</p>
+
+                        <button onClick={() => clicked('submit')} className="self-center w-56 px-5 py-3 font-medium text-white bg-blue-400 rounded-lg hover:bg-blue-700">
+                            Submit an Excuse
                         </button>
                     </div>
                 </div>

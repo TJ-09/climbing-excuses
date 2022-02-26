@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { supabase } from '../../utils/supabaseClient'
 
 const excuses = [
   { id: 1, excuse: "I went out last" },
@@ -47,25 +48,54 @@ const excuses = [
   { id: 44, excuse: "It's not a send day" },
 ]
 
-export default function handler(req, res) {
+const getId = async () => {
+  // get all the ID's from the server that are published
+  const { data, error } = await supabase
+    .from('excuses')
+    .select('id',)
+    .eq('published', true)
+
+  // extract at random an ID
+  const rngSingleId = data[Math.floor(Math.random() * data.length)];
+  return rngSingleId.id
+}
+
+const getData = async (id) => {
+  // get the record for just the ID chosen and return
+  const { data, error } = await supabase
+    .from('excuses')
+    .select('*')
+    .eq('id', id)
+    .eq('published', true)
+
+  if (data) {
+    return data[0]
+  } else {
+    return error
+  }
+}
+
+export default async function handler(req, res) {
 
   let item;
 
   if (req.query.q) {  //if we have an ID process it
     const queryNum = parseInt(req.query.q); //convert to Int
     if (Number.isInteger(queryNum)) { // is it real?
-      item = excuses.find(item => item.id === (queryNum / 215)); // can we find it?
+      item = await getData((queryNum / 215)) // can we find it?
     }
   }
 
   if (item) { //do we have a specific from above?
     // send the requested back
-    res.status(200).json(item)
-
+    res.status(200).json({ id: item.id, excuse: item.excuse_text })
   } else {
-    // send a random one back
-    const rngSingle = excuses[Math.floor(Math.random() * excuses.length)];
-    res.status(200).json(rngSingle)
+    // we don't have it so send a random one
+    const id = await getId();
+    item = await getData(id)
+    if (item) {
+      res.status(200).json({ id: item.id, excuse: item.excuse_text })
+    }
   }
 
 }

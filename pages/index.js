@@ -3,6 +3,7 @@ import Banner from '../components/Banner/Banner'
 import Card from '../components/Card/Card'
 import Footer from '../components/Footer/Footer'
 import TextExcuse from '../components/TextExcuse/TextExcuse'
+import SubmitExcuse from '../components/SubmitExcuse/SubmitExcuse'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect, useCallback } from 'react';
 
@@ -36,8 +37,8 @@ export default function Home() {
   const ExcuseLoad = () => {
     return <Card content={<TextExcuse clicked={ChangeMode} id={router.query.q} />} />;
   };
-  const SubmitExcuse = () => {
-    return <Card content={<TextExcuse clicked={ChangeMode} id={router.query.q} />} />;
+  const SubmitEx = () => {
+    return <Card content={<SubmitExcuse clicked={ChangeMode} />} />;
   };
   const Default = () => {
     return <Card content={< Banner clicked={ChangeMode} />} />;;
@@ -47,6 +48,7 @@ export default function Home() {
     home: <Home />,
     excuse: <Excuse />,
     excuseLoad: <ExcuseLoad />,
+    submit: <SubmitEx />,
     default: <Default />
   };
 

@@ -13,7 +13,6 @@ const TextExcuse = ({ clicked, id }) => {
     const { data, mutate, error } = useSwr(`/api/excuse?q=${id}`, fetcher)
 
     let response;
-
     if (error) {
         response = <div>Failed to load excuse</div>
     }
@@ -68,8 +67,6 @@ const TextExcuse = ({ clicked, id }) => {
                     </div>
                 </div>
             }
-
-
 
         </>
 
