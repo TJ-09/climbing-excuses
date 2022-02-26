@@ -36,6 +36,9 @@ export default function Home() {
   const ExcuseLoad = () => {
     return <Card content={<TextExcuse clicked={ChangeMode} id={router.query.q} />} />;
   };
+  const SubmitExcuse = () => {
+    return <Card content={<TextExcuse clicked={ChangeMode} id={router.query.q} />} />;
+  };
   const Default = () => {
     return <Card content={< Banner clicked={ChangeMode} />} />;;
   };
@@ -68,7 +71,7 @@ export default function Home() {
         <meta property="og:description" content="Create an excuse for your climbing abilities" />
         <meta property="og:site_name" content="Climbing Excuses" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <meta charset="UTF-8"></meta>
+        <meta charSet="UTF-8"></meta>
       </Head>
 
       <div className="bg-gradient-to-t from-yellow-400 via-gray-50 to-teal-300 flex flex-col h-screen justify-between">
