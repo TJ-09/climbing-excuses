@@ -28,8 +28,6 @@ const SubmitExcuse = ({ clicked }) => {
 
         const result = await res.json()
         if (result.data) {
-            console.log(result.data)
-            console.log(result.data[0].id)
             setShareID(result.data[0].id)
             OpenSharesLink()
         }

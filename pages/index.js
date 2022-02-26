@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Banner from '../components/Banner/Banner'
 import Card from '../components/Card/Card'
 import Footer from '../components/Footer/Footer'
@@ -6,8 +5,10 @@ import TextExcuse from '../components/TextExcuse/TextExcuse'
 import SubmitExcuse from '../components/SubmitExcuse/SubmitExcuse'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect, useCallback } from 'react';
+import { supabase } from '../utils/supabaseClient'
 
-export default function Home() {
+
+export default function Home({ user }) {
   const router = useRouter()
 
   const [mainBody, setMainBody] = useState('home');
@@ -56,37 +57,43 @@ export default function Home() {
     return <div>{ENUM_STATES[state]}</div>;
   }
 
+  const signOut = async () => {
+    await supabase.auth.signOut()
+    router.replace('/')
+  }
+
   return (
     <>
-      <Head>
-        <title>Climbing Excuses - On Demand</title>
-        <meta name="Climbing Excuses - On Demand" content="Create an excuse for your climbing abilities" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="description" content="Create an excuse for your climbing abilities"></meta>
-        <meta property="og:title" content="Climbing Excuses - On Demand" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://climbingexcuses.com" />
-        <meta property="og:image" content="https://climbingexcuses.com/apple-touch-icon.png" />
-        <meta property="og:description" content="Create an excuse for your climbing abilities" />
-        <meta property="og:site_name" content="Climbing Excuses" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <meta charSet="UTF-8"></meta>
-      </Head>
-
       <div className="bg-gradient-to-t from-yellow-400 via-gray-50 to-teal-300 flex flex-col h-screen justify-between">
 
-        <main className='py-4'>
+        {user &&
 
-          <EnumState state={mainBody}></EnumState>
-
-        </main>
+          <aside className="p-3 text-center text-white bg-indigo-600">
+            <a className="text-sm font-medium underline underline-offset-1 cursor-pointer" onClick={signOut}>
+              Welcome Strong Boi - {user.email.split("@")[0]}. Click here to logout
+              &rarr;
+            </a>
+          </aside>
+        }
+        <EnumState state={mainBody}></EnumState>
 
         <Footer />
 
       </div>
     </>
   )
+}
+
+export async function getServerSideProps({ req }) {
+  const { user } = await supabase.auth.api.getUserByCookie(req);
+
+  if (user) {
+    return {
+      props: {
+        user
+      }
+    };
+  }
+
+  return { props: {} };
 }

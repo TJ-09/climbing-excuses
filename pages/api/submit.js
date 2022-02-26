@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     if (!name) {
         // if we don't have a name them make it anon
-        name = 'anon';
+        name = 'Anon';
     }
     if (!excuse) {
 
