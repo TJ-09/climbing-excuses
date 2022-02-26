@@ -66,16 +66,17 @@ export default function Home({ user }) {
     <>
       <div className="bg-gradient-to-t from-yellow-400 via-gray-50 to-teal-300 flex flex-col h-screen justify-between">
 
+        <EnumState state={mainBody}></EnumState>
+
         {user &&
 
-          <aside className="p-3 text-center text-white bg-indigo-600">
+          <aside className="p-3 text-center text-white bg-gray-800">
             <a className="text-sm font-medium underline underline-offset-1 cursor-pointer" onClick={signOut}>
               Welcome Strong Boi - {user.email.split("@")[0]}. Click here to logout
               &rarr;
             </a>
           </aside>
         }
-        <EnumState state={mainBody}></EnumState>
 
         <Footer />
 

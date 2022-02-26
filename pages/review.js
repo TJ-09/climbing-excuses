@@ -49,13 +49,18 @@ const Review = () => {
     }
 
     const updateData = async () => {
-        console.log('publishing')
+        try {
+            const { data, error } = await supabase
+                .from('excuses')
+                .upsert(content)
 
-        const { data, error } = await supabase
-            .from('excuses')
-            .upsert(content)
-
-        // router.replace('/', undefined, { shallow: true })
+            if (error) throw error
+            alert('Complete, redirecting')
+        } catch (error) {
+            alert(error.error_description || error.message)
+        } finally {
+            router.replace('/', undefined, { shallow: true })
+        }
     }
 
     let tableData;

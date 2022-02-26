@@ -1,10 +1,12 @@
 import Card from "../components/Card/Card";
 import { useState } from 'react'
 import { supabase } from '../utils/supabaseClient'
+import { useRouter } from 'next/router'
 
 const Login = () => {
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
+    const router = useRouter()
 
     const handleLogin = async (email) => {
         try {
@@ -16,6 +18,7 @@ const Login = () => {
             alert(error.error_description || error.message)
         } finally {
             setLoading(false)
+            router.replace('/', undefined, { shallow: true });
         }
     }
 
