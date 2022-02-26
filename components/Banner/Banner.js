@@ -5,7 +5,7 @@ const Banner = ({ clicked }) => {
             <div className="px-4 mx-auto sm:px-6 lg:px-8 sm:py-36 lg:flex lg:items-center">
                 <div className="max-w-3xl mx-auto text-center">
                     <h1
-                        className="text-3xl font-extrabold text-transparent sm:text-6xl bg-clip-text bg-gradient-to-r from-blue-300 via-blue-500 to-blue-900">
+                        className="text-3xl pb-3 font-extrabold text-transparent sm:text-6xl bg-clip-text bg-gradient-to-r from-blue-300 via-blue-500 to-blue-900">
                         Climbing Excuses
                     </h1>
                     <h1
