@@ -26,8 +26,8 @@ const SubmitExcuse = ({ clicked }) => {
 
     return (
         <>
-            <div classNameName='flex justify-between pb-2'>
-                <AiOutlineHome onClick={() => clicked('home')} size={20} classNameName="text-gray-400 cursor-pointer" />
+            <div className='flex justify-between pb-2'>
+                <AiOutlineHome onClick={() => clicked('home')} size={20} className="text-gray-400 cursor-pointer" />
             </div>
 
             <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@ const SubmitExcuse = ({ clicked }) => {
                     <h1 className="text-2xl font-bold sm:text-3xl">Submit your Excuse!</h1>
 
                     <p className="mt-4 text-gray-500">
-                        We&apos;ve all heard the excuses in the gym or at the crag from our buddies. Grow our list of excuses by telling us about them, we personally filter all of them but will give you the link when you submit.
+                        We&apos;ve all heard the excuses in the gym or at the crag from our buddies. Grow our list of excuses by telling us about them, we personally filter all of them so might take some time but will give you the link when you submit.
                     </p>
                 </div>
 
@@ -53,7 +53,7 @@ const SubmitExcuse = ({ clicked }) => {
                             />
                         </div>
                     </div>
-
+                    <h5 className="text-xl font-bold text-center text-gray-900">Sorry for my poor climbing,... </h5>
                     <div>
                         <label htmlFor="excuse" className="sr-only">Excuse</label>
                         <div className="relative">
